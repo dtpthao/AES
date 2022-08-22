@@ -1,0 +1,28 @@
+#ifndef _MCOL_H
+#define _MCOL_H
+
+#include <stdio.h>
+#include <math.h>
+
+#define POLYNOM 0x11B // {x^{8} + x^{4} + x^{3} + x + 1}.
+#define M_POLY 8  //2^m
+#define POW2m_POLY (1 << M_POLY)
+
+const unsigned char MCOL_MATRIX[4][4] = {
+    { 0x02, 0x03, 0x01, 0x01 },
+    { 0x01, 0x02, 0x03, 0x01 },
+    { 0x01, 0x01, 0x02, 0x03 },
+    { 0x03, 0x01, 0x01, 0x02 }
+};
+
+const unsigned char INV_MCOL_MATRIX[4][4] = {
+    { 0x0E, 0x0B, 0x0D, 0x09 },
+    { 0x09, 0x0E, 0x0B, 0x0D },
+    { 0x0D, 0x09, 0x0E, 0x0B },
+    { 0x0B, 0x0D, 0x09, 0x0E }
+};
+
+void MixColumn(unsigned char *state, const unsigned char matrix[4][4]);
+
+#endif // !_MCOL_H
+
